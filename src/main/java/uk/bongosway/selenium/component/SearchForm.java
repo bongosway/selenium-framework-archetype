@@ -1,9 +1,14 @@
 package uk.bongosway.selenium.component;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+
+import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import uk.bongosway.selenium.helper.ElementInteractionHelper;
 
 public class SearchForm {
@@ -20,11 +25,10 @@ public class SearchForm {
 
   public SearchForm enterTerm(String term) {
     ElementInteractionHelper.enterText(driver, inputField, term);
-    try {
-      Thread.sleep(5000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+
+    WebDriverWait wait = new WebDriverWait(driver, 10, 100);
+    wait.until(d -> d.findElement(searchFormAutocomplete).isDisplayed());
+
     ElementInteractionHelper.click(driver, searchFormAutocomplete);
     return this;
   }

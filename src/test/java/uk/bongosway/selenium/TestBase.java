@@ -2,14 +2,11 @@ package uk.bongosway.selenium;
 
 import java.io.IOException;
 import java.net.URL;
-
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Capabilities;
-
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import ru.stqa.selenium.factory.WebDriverPool;
 import uk.bongosway.selenium.config.AppConfiguration;
 
