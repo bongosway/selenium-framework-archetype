@@ -4,7 +4,6 @@
   <groupId>uk.bongosway.selenium</groupId>
   <artifactId>selenium-framework-archetype</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
 
   <name>Selenium framework archetype</name>
   <description>Archetype for generating domain driven framework template for writing selenium test.</description>
@@ -40,7 +39,7 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>7.1.0</version>
-      <scope>test</scope>
+
     </dependency>
     <dependency>
       <groupId>com.github.javafaker</groupId>
@@ -83,7 +82,7 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-failsafe-plugin</artifactId>
+        <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
           <suiteXmlFiles>
@@ -93,14 +92,6 @@
             <application.properties>/application.properties</application.properties>
           </systemPropertyVariables>
         </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
