@@ -6,7 +6,7 @@
   <version>1.0-SNAPSHOT</version>
 
   <name>Selenium framework archetype</name>
-  <description>Archetype for generating domain driven framework template for writing selenium test.</description>
+  <description>A production-ready UI automation framework template, to help test engineers bootstrap project creation and wiring process in order to focus on writing test</description>
 
   <inceptionYear>2020</inceptionYear>
   <developers>
@@ -40,11 +40,6 @@
       <artifactId>testng</artifactId>
       <version>7.1.0</version>
 
-    </dependency>
-    <dependency>
-      <groupId>com.github.javafaker</groupId>
-      <artifactId>javafaker</artifactId>
-      <version>1.0.2</version>
     </dependency>
     <dependency>
       <groupId>ru.stqa.selenium</groupId>
@@ -126,7 +121,7 @@
     <profile>
       <id>localhost</id>
       <properties>
-        <site.url>https://parabank.parasoft.com/</site.url>
+        <site.url>https://www.google.com/</site.url>
       </properties>
       <activation>
         <activeByDefault>true</activeByDefault>

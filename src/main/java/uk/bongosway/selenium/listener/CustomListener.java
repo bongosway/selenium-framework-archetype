@@ -17,6 +17,7 @@ public class CustomListener extends TestListenerAdapter implements ITestListener
     log(String.format(FAILURE, duration(testResult)) + formatDescription(testResult));
   }
 
+
   @Override
   public void onTestSkipped(ITestResult testResult) {
     log(SKIPPED + formatDescription(testResult));

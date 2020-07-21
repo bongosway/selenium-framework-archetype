@@ -6,7 +6,6 @@ public class SearchResult {
   private String linkCitation;
   private String summary;
 
-
   public SearchResult(String link, String linkText, String linkCitation, String summary) {
     this.link = link;
     this.linkText = linkText;
