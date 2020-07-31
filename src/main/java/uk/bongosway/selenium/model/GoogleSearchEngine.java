@@ -1,22 +1,21 @@
 package uk.bongosway.selenium.model;
 
-import com.google.inject.Inject;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
-import uk.bongosway.selenium.config.driver.DriverProvider;
-import uk.bongosway.selenium.pages.HomePage;
+import uk.bongosway.selenium.config.driver.SharedDriver;
+import uk.bongosway.selenium.pages.google.GoogleHomePage;
 
 public class GoogleSearchEngine implements SearchEngine {
 
   private final WebDriver driver;
 
-  @Inject
-  public GoogleSearchEngine(DriverProvider driver) {
-    this.driver = driver.create();
+  public GoogleSearchEngine() {
+    this.driver = SharedDriver.getDriver();
   }
 
   @Override
   public List<SearchResult> searchFor(String term) {
-    return new HomePage(driver).search(term).collectResults();
+    return new GoogleHomePage(driver).search(term)
+                                     .collectResults();
   }
 }

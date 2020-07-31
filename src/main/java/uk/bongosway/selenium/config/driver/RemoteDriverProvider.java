@@ -10,11 +10,17 @@ import uk.bongosway.selenium.config.AppConfiguration;
 public class RemoteDriverProvider implements DriverProvider {
 
   protected static AppConfiguration config = AppConfiguration.getInstance();
+  private WebDriver driver;
 
   @Override
   public WebDriver create() {
+    if (driver != null) {
+      return driver;
+    }
+
     URL gridHubUrl = config.gridUrl()
                            .equalsIgnoreCase("") ? null : stringToUrl(config.gridUrl());
-    return WebDriverPool.DEFAULT.getDriver(gridHubUrl, config.getCapabilities());
+    driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, config.getCapabilities());
+    return driver;
   }
 }

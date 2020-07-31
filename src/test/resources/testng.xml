@@ -3,7 +3,7 @@
 <suite name="Sample Suite" verbose="0">
   <test name="Sample">
     <classes>
-      <class name="uk.bongosway.selenium.SampleTest"/>
+      <class name="uk.bongosway.selenium.SampleSearchEngineTest"/>
     </classes>
   </test>  
 </suite>

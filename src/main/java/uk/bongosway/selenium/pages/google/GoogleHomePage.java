@@ -1,19 +1,22 @@
-package uk.bongosway.selenium.pages;
+package uk.bongosway.selenium.pages.google;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import uk.bongosway.selenium.component.SearchForm;
 import uk.bongosway.selenium.helper.UrlHelper;
+import uk.bongosway.selenium.pages.Page;
 
 /**
  * Sample page
  */
-public class HomePage extends Page {
+public class GoogleHomePage extends Page {
 
   private static final String PATH = "/";
+  private final By logo = By.id("#hplogo");
   private final SearchForm searchForm;
 
-  public HomePage(WebDriver webDriver) {
+  public GoogleHomePage(WebDriver webDriver) {
     super(webDriver);
+    open();
     searchForm = new SearchForm(driver);
   }
 
@@ -22,7 +25,6 @@ public class HomePage extends Page {
   }
 
   public SearchForm search(String term) {
-    open();
     return searchForm.search(term);
   }
 }

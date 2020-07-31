@@ -32,6 +32,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <screenshot.dir>${project.build.directory}/report/screenshot</screenshot.dir>
   </properties>
 
   <dependencies>
@@ -42,9 +43,19 @@
 
     </dependency>
     <dependency>
+      <groupId>org.apache.maven.surefire</groupId>
+      <artifactId>surefire-testng</artifactId>
+      <version>3.0.0-M5</version>
+    </dependency>
+    <dependency>
       <groupId>ru.stqa.selenium</groupId>
       <artifactId>webdriver-factory</artifactId>
       <version>4.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.30</version>
     </dependency>
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
@@ -80,6 +91,16 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M5</version>
         <configuration>
+          <properties>
+          <property>
+            <name>usedefaultlisteners</name>
+            <value>false</value> <!-- disabling default listeners is optional -->
+          </property>
+            <property>
+              <name>listener</name>
+              <value>uk.bongosway.selenium.report.MyReporter</value>
+            </property>
+          </properties>
           <suiteXmlFiles>
             <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
           </suiteXmlFiles>
@@ -122,6 +143,7 @@
       <id>localhost</id>
       <properties>
         <site.url>https://www.google.com/</site.url>
+        <screenshot.location>${screenshot.dir}</screenshot.location>
       </properties>
       <activation>
         <activeByDefault>true</activeByDefault>
@@ -131,6 +153,7 @@
       <id>production</id>
       <properties>
         <site.url>http://production.com/</site.url>
+        <screenshot.location>${screenshot.dir}</screenshot.location>
       </properties>
     </profile>
     <!-- grid -->

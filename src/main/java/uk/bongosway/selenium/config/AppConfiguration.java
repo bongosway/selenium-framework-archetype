@@ -53,6 +53,14 @@ public class AppConfiguration {
     return capabilities;
   }
 
+  public boolean isErrorScreenshotEnabled() {
+    return Boolean.parseBoolean(getProperty("screenshots.onFailure.enabled"));
+  }
+
+  public String screenshotLocation() {
+    return getProperty("screenshot.location");
+  }
+
   public String baseUrl() {
     return getProperty("site.url");
   }

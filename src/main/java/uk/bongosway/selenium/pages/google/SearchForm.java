@@ -1,4 +1,4 @@
-package uk.bongosway.selenium.component;
+package uk.bongosway.selenium.pages.google;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,17 +25,17 @@ public class SearchForm {
   }
 
   public SearchForm search(String term) {
-    ElementInteractionHelper.enterText(driver, inputField, term);
+    ElementInteractionHelper.enterText(inputField, term);
 
     WebDriverWait wait = new WebDriverWait(driver, 10, 100);
     wait.until(d -> d.findElement(searchFormAutocomplete).isDisplayed());
 
-    ElementInteractionHelper.click(driver, searchFormAutocomplete);
+    ElementInteractionHelper.click(searchFormAutocomplete);
     return this;
   }
 
   public List<SearchResult> collectResults() {
-    List<WebElement> elementList = ElementInteractionHelper.getElementList(driver, results);
+    List<WebElement> elementList = ElementInteractionHelper.getElementList(results);
     return elementList.stream()
                       .filter(e -> !e.findElement(linkText).getText().equals(""))
                       .limit(4)

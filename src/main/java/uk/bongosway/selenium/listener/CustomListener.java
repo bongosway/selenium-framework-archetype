@@ -8,7 +8,7 @@ import org.testng.TestListenerAdapter;
 public class CustomListener extends TestListenerAdapter implements ITestListener {
 
   private static final String SKIPPED = "SKIPPED (%8.1f)s: ";
-  private static final String FAILURE = "FAILURE (%8.1f)s: ";
+  private static final String FAILURE = "FAILED (%8.1f)s: ";
   private static final String SUCCESS = "Success (%8.1f)s: ";
 
   @Override
@@ -20,6 +20,7 @@ public class CustomListener extends TestListenerAdapter implements ITestListener
 
   @Override
   public void onTestSkipped(ITestResult testResult) {
+    super.onTestSkipped(testResult);
     log(SKIPPED + formatDescription(testResult));
   }
 
@@ -35,7 +36,11 @@ public class CustomListener extends TestListenerAdapter implements ITestListener
   }
 
   private String formatDescription(ITestResult result) {
-    return result.getMethod().getDescription();
+
+    return result.getMethod()
+                 .getDescription()
+                 .isEmpty() ? result.getName() : result.getMethod()
+                                                       .getDescription();
   }
 
   private float duration(ITestResult result) {
